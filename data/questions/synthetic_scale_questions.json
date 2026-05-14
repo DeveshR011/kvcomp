@@ -1,0 +1,178 @@
+[
+  {
+    "id": "q_synthetic_scale_1000_beginning",
+    "document_id": "synthetic_scale_1000",
+    "category": "fact_near_beginning",
+    "question": "What safe baseline model and num_ctx are recommended near the beginning of the document?",
+    "expected_points": [
+      {
+        "label": "baseline is llama3:latest",
+        "keywords": [
+          "llama3:latest"
+        ]
+      },
+      {
+        "label": "num_ctx is 2048",
+        "keywords": [
+          "num_ctx",
+          "2048"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "q_synthetic_scale_1000_end",
+    "document_id": "synthetic_scale_1000",
+    "category": "fact_near_end",
+    "question": "What should adaptive context do when retrieval confidence is low?",
+    "expected_points": [
+      {
+        "label": "use retrieval plus summary",
+        "aliases": [
+          "retrieval plus summary",
+          "summary",
+          "retrieval"
+        ]
+      },
+      {
+        "label": "condition is low retrieval confidence",
+        "keywords": [
+          "retrieval confidence",
+          "low"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "q_synthetic_scale_2000_beginning",
+    "document_id": "synthetic_scale_2000",
+    "category": "fact_near_beginning",
+    "question": "What safe baseline model and num_ctx are recommended near the beginning of the document?",
+    "expected_points": [
+      {
+        "label": "baseline is llama3:latest",
+        "keywords": [
+          "llama3:latest"
+        ]
+      },
+      {
+        "label": "num_ctx is 2048",
+        "keywords": [
+          "num_ctx",
+          "2048"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "q_synthetic_scale_2000_end",
+    "document_id": "synthetic_scale_2000",
+    "category": "fact_near_end",
+    "question": "What should adaptive context do when retrieval confidence is low?",
+    "expected_points": [
+      {
+        "label": "use retrieval plus summary",
+        "aliases": [
+          "retrieval plus summary",
+          "summary",
+          "retrieval"
+        ]
+      },
+      {
+        "label": "condition is low retrieval confidence",
+        "keywords": [
+          "retrieval confidence",
+          "low"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "q_synthetic_scale_4000_beginning",
+    "document_id": "synthetic_scale_4000",
+    "category": "fact_near_beginning",
+    "question": "What safe baseline model and num_ctx are recommended near the beginning of the document?",
+    "expected_points": [
+      {
+        "label": "baseline is llama3:latest",
+        "keywords": [
+          "llama3:latest"
+        ]
+      },
+      {
+        "label": "num_ctx is 2048",
+        "keywords": [
+          "num_ctx",
+          "2048"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "q_synthetic_scale_4000_end",
+    "document_id": "synthetic_scale_4000",
+    "category": "fact_near_end",
+    "question": "What should adaptive context do when retrieval confidence is low?",
+    "expected_points": [
+      {
+        "label": "use retrieval plus summary",
+        "aliases": [
+          "retrieval plus summary",
+          "summary",
+          "retrieval"
+        ]
+      },
+      {
+        "label": "condition is low retrieval confidence",
+        "keywords": [
+          "retrieval confidence",
+          "low"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "q_synthetic_scale_8000_beginning",
+    "document_id": "synthetic_scale_8000",
+    "category": "fact_near_beginning",
+    "question": "What safe baseline model and num_ctx are recommended near the beginning of the document?",
+    "expected_points": [
+      {
+        "label": "baseline is llama3:latest",
+        "keywords": [
+          "llama3:latest"
+        ]
+      },
+      {
+        "label": "num_ctx is 2048",
+        "keywords": [
+          "num_ctx",
+          "2048"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "q_synthetic_scale_8000_end",
+    "document_id": "synthetic_scale_8000",
+    "category": "fact_near_end",
+    "question": "What should adaptive context do when retrieval confidence is low?",
+    "expected_points": [
+      {
+        "label": "use retrieval plus summary",
+        "aliases": [
+          "retrieval plus summary",
+          "summary",
+          "retrieval"
+        ]
+      },
+      {
+        "label": "condition is low retrieval confidence",
+        "keywords": [
+          "retrieval confidence",
+          "low"
+        ]
+      }
+    ]
+  }
+]

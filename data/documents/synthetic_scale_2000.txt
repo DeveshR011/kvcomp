@@ -1,0 +1,149 @@
+Synthetic scaling document target: about 2000 tokens.
+
+Anchor fact near beginning: the recommended safe baseline is llama3:latest with num_ctx 2048.
+
+Machine learning systems learn statistical patterns from data. Local inference keeps data private, but local hardware has strict memory and latency limits.
+
+Transformer models use attention to relate tokens in a context. During inference, the model stores previous key and value tensors in the KV cache.
+
+Quantization reduces model weight size by storing parameters with fewer bits. It helps the model fit, but it does not remove KV-cache growth from long prompts.
+
+Retrieval memory splits a document into chunks and selects only relevant chunks for the question. This can reduce prompt length while preserving exact evidence.
+
+Summary memory compresses older context into shorter text. It preserves broad ideas but can lose exact names, numbers, code lines, or edge-case details.
+
+Sliding window memory keeps only recent context. It is efficient for recent facts but unreliable when the answer appears near the beginning of a long document.
+
+On a 6 GB GPU, model weights, KV cache, temporary buffers, and runtime overhead compete for the same limited memory budget.
+
+A budget-aware context controller chooses the cheapest context strategy likely to answer the question under the current prompt and memory budget.
+
+Machine learning systems learn statistical patterns from data. Local inference keeps data private, but local hardware has strict memory and latency limits.
+
+Transformer models use attention to relate tokens in a context. During inference, the model stores previous key and value tensors in the KV cache.
+
+Quantization reduces model weight size by storing parameters with fewer bits. It helps the model fit, but it does not remove KV-cache growth from long prompts.
+
+Retrieval memory splits a document into chunks and selects only relevant chunks for the question. This can reduce prompt length while preserving exact evidence.
+
+Summary memory compresses older context into shorter text. It preserves broad ideas but can lose exact names, numbers, code lines, or edge-case details.
+
+Sliding window memory keeps only recent context. It is efficient for recent facts but unreliable when the answer appears near the beginning of a long document.
+
+On a 6 GB GPU, model weights, KV cache, temporary buffers, and runtime overhead compete for the same limited memory budget.
+
+A budget-aware context controller chooses the cheapest context strategy likely to answer the question under the current prompt and memory budget.
+
+Machine learning systems learn statistical patterns from data. Local inference keeps data private, but local hardware has strict memory and latency limits.
+
+Transformer models use attention to relate tokens in a context. During inference, the model stores previous key and value tensors in the KV cache.
+
+Quantization reduces model weight size by storing parameters with fewer bits. It helps the model fit, but it does not remove KV-cache growth from long prompts.
+
+Retrieval memory splits a document into chunks and selects only relevant chunks for the question. This can reduce prompt length while preserving exact evidence.
+
+Summary memory compresses older context into shorter text. It preserves broad ideas but can lose exact names, numbers, code lines, or edge-case details.
+
+Sliding window memory keeps only recent context. It is efficient for recent facts but unreliable when the answer appears near the beginning of a long document.
+
+On a 6 GB GPU, model weights, KV cache, temporary buffers, and runtime overhead compete for the same limited memory budget.
+
+A budget-aware context controller chooses the cheapest context strategy likely to answer the question under the current prompt and memory budget.
+
+Machine learning systems learn statistical patterns from data. Local inference keeps data private, but local hardware has strict memory and latency limits.
+
+Transformer models use attention to relate tokens in a context. During inference, the model stores previous key and value tensors in the KV cache.
+
+Quantization reduces model weight size by storing parameters with fewer bits. It helps the model fit, but it does not remove KV-cache growth from long prompts.
+
+Retrieval memory splits a document into chunks and selects only relevant chunks for the question. This can reduce prompt length while preserving exact evidence.
+
+Summary memory compresses older context into shorter text. It preserves broad ideas but can lose exact names, numbers, code lines, or edge-case details.
+
+Sliding window memory keeps only recent context. It is efficient for recent facts but unreliable when the answer appears near the beginning of a long document.
+
+On a 6 GB GPU, model weights, KV cache, temporary buffers, and runtime overhead compete for the same limited memory budget.
+
+A budget-aware context controller chooses the cheapest context strategy likely to answer the question under the current prompt and memory budget.
+
+Machine learning systems learn statistical patterns from data. Local inference keeps data private, but local hardware has strict memory and latency limits.
+
+Transformer models use attention to relate tokens in a context. During inference, the model stores previous key and value tensors in the KV cache.
+
+Quantization reduces model weight size by storing parameters with fewer bits. It helps the model fit, but it does not remove KV-cache growth from long prompts.
+
+Retrieval memory splits a document into chunks and selects only relevant chunks for the question. This can reduce prompt length while preserving exact evidence.
+
+Summary memory compresses older context into shorter text. It preserves broad ideas but can lose exact names, numbers, code lines, or edge-case details.
+
+Sliding window memory keeps only recent context. It is efficient for recent facts but unreliable when the answer appears near the beginning of a long document.
+
+On a 6 GB GPU, model weights, KV cache, temporary buffers, and runtime overhead compete for the same limited memory budget.
+
+A budget-aware context controller chooses the cheapest context strategy likely to answer the question under the current prompt and memory budget.
+
+Machine learning systems learn statistical patterns from data. Local inference keeps data private, but local hardware has strict memory and latency limits.
+
+Transformer models use attention to relate tokens in a context. During inference, the model stores previous key and value tensors in the KV cache.
+
+Quantization reduces model weight size by storing parameters with fewer bits. It helps the model fit, but it does not remove KV-cache growth from long prompts.
+
+Retrieval memory splits a document into chunks and selects only relevant chunks for the question. This can reduce prompt length while preserving exact evidence.
+
+Summary memory compresses older context into shorter text. It preserves broad ideas but can lose exact names, numbers, code lines, or edge-case details.
+
+Sliding window memory keeps only recent context. It is efficient for recent facts but unreliable when the answer appears near the beginning of a long document.
+
+On a 6 GB GPU, model weights, KV cache, temporary buffers, and runtime overhead compete for the same limited memory budget.
+
+A budget-aware context controller chooses the cheapest context strategy likely to answer the question under the current prompt and memory budget.
+
+Machine learning systems learn statistical patterns from data. Local inference keeps data private, but local hardware has strict memory and latency limits.
+
+Transformer models use attention to relate tokens in a context. During inference, the model stores previous key and value tensors in the KV cache.
+
+Quantization reduces model weight size by storing parameters with fewer bits. It helps the model fit, but it does not remove KV-cache growth from long prompts.
+
+Retrieval memory splits a document into chunks and selects only relevant chunks for the question. This can reduce prompt length while preserving exact evidence.
+
+Summary memory compresses older context into shorter text. It preserves broad ideas but can lose exact names, numbers, code lines, or edge-case details.
+
+Sliding window memory keeps only recent context. It is efficient for recent facts but unreliable when the answer appears near the beginning of a long document.
+
+On a 6 GB GPU, model weights, KV cache, temporary buffers, and runtime overhead compete for the same limited memory budget.
+
+A budget-aware context controller chooses the cheapest context strategy likely to answer the question under the current prompt and memory budget.
+
+Machine learning systems learn statistical patterns from data. Local inference keeps data private, but local hardware has strict memory and latency limits.
+
+Transformer models use attention to relate tokens in a context. During inference, the model stores previous key and value tensors in the KV cache.
+
+Quantization reduces model weight size by storing parameters with fewer bits. It helps the model fit, but it does not remove KV-cache growth from long prompts.
+
+Retrieval memory splits a document into chunks and selects only relevant chunks for the question. This can reduce prompt length while preserving exact evidence.
+
+Summary memory compresses older context into shorter text. It preserves broad ideas but can lose exact names, numbers, code lines, or edge-case details.
+
+Sliding window memory keeps only recent context. It is efficient for recent facts but unreliable when the answer appears near the beginning of a long document.
+
+On a 6 GB GPU, model weights, KV cache, temporary buffers, and runtime overhead compete for the same limited memory budget.
+
+A budget-aware context controller chooses the cheapest context strategy likely to answer the question under the current prompt and memory budget.
+
+Machine learning systems learn statistical patterns from data. Local inference keeps data private, but local hardware has strict memory and latency limits.
+
+Transformer models use attention to relate tokens in a context. During inference, the model stores previous key and value tensors in the KV cache.
+
+Quantization reduces model weight size by storing parameters with fewer bits. It helps the model fit, but it does not remove KV-cache growth from long prompts.
+
+Retrieval memory splits a document into chunks and selects only relevant chunks for the question. This can reduce prompt length while preserving exact evidence.
+
+Summary memory compresses older context into shorter text. It preserves broad ideas but can lose exact names, numbers, code lines, or edge-case details.
+
+Sliding window memory keeps only recent context. It is efficient for recent facts but unreliable when the answer appears near the beginning of a long document.
+
+On a 6 GB GPU, model weights, KV cache, temporary buffers, and runtime overhead compete for the same limited memory budget.
+
+A budget-aware context controller chooses the cheapest context strategy likely to answer the question under the current prompt and memory budget.
+
+Anchor fact near end: adaptive context should use retrieval plus summary when retrieval confidence is low.

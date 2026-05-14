@@ -1,0 +1,22 @@
+Symbolic artificial intelligence represents knowledge using explicit rules, symbols, and logic. Early AI systems often used hand-written rules to solve narrow tasks. These systems could be precise, but they were brittle when the real world did not match the rules.
+
+Machine learning changed the approach by allowing systems to learn patterns from examples. Instead of writing every rule, engineers provide data and an objective. The model adjusts its parameters so that it can make useful predictions on new inputs.
+
+Supervised learning uses labeled examples. A classifier may learn from images labeled as cats or dogs. A regression model may learn to estimate house prices from examples of previous sales.
+
+Unsupervised learning tries to find structure without explicit labels. Clustering, dimensionality reduction, and topic discovery are common examples. These methods are useful when labels are expensive or unavailable.
+
+Reinforcement learning trains agents through rewards and penalties. The agent observes a state, takes an action, and receives feedback. This approach is used in games, robotics, and decision-making tasks where sequential behavior matters.
+
+Deep learning uses neural networks with many layers. These networks can learn hierarchical representations. For text, the network may learn patterns about words, phrases, syntax, and semantics. For images, the network may learn edges, shapes, textures, and objects.
+
+Large language models are deep learning systems trained on large text corpora. They predict the next token during training and inference. This simple objective can produce models that summarize, translate, answer questions, write code, and reason over documents.
+
+Local LLM inference means running a language model on a personal laptop, workstation, or edge device instead of using a cloud API. Local inference improves privacy and control, but it is limited by available RAM, VRAM, power, and cooling.
+
+Quantized models make local inference more practical by storing weights with fewer bits. A 4-bit quantized model can fit into much less memory than a 16-bit model. However, quantization mainly reduces weight memory, not the full cost of long-context inference.
+
+Long-context inference remains difficult because attention-related memory grows with context length. Even if the model weights are compressed, the system still needs to process the prompt and store token information during generation.
+
+For small GPUs, the practical question is not only whether the model can load. The more important question is whether the model can answer accurately with acceptable latency while staying within the memory budget.
+

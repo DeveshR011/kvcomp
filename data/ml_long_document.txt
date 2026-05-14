@@ -1,0 +1,52 @@
+Machine learning is a field of artificial intelligence where systems learn patterns from data instead of being programmed with every rule by hand. A machine learning model studies examples, adjusts its internal parameters, and then uses the learned pattern to make predictions or generate outputs.
+
+Deep learning is a subfield of machine learning that uses neural networks with many layers. These layers transform input data step by step. In language models, the input is text split into tokens. The model predicts the next token based on the tokens that came before it.
+
+Transformer models are widely used for modern language models. A transformer uses attention to compare tokens with other tokens in the context. Attention helps the model decide which previous words, lines, or facts are important for the next prediction.
+
+Efficient deep learning tries to reduce memory usage, computation cost, and energy consumption while keeping useful accuracy. This is important for local inference because laptops and small desktops have much less GPU memory than large servers.
+
+Quantization reduces the number of bits used to store model weights. For example, a model may use 4-bit weights instead of 16-bit weights. This can make the model file smaller and reduce the memory needed to load the model. Quantization is one reason local users can run billion-parameter models on consumer GPUs.
+
+Pruning removes less important neurons, channels, or weights from a model. The goal is to reduce computation while preserving useful behavior. Pruning is often used during model optimization, but it is not always available for downloaded local models.
+
+Knowledge distillation trains a smaller student model using outputs from a larger teacher model. The smaller model learns to imitate the larger model. Distillation is useful when deployment hardware has limited memory or compute.
+
+During transformer inference, the model uses a structure called the KV cache. KV means key-value. The KV cache stores attention information for previous tokens so the model does not need to recompute that information every time it generates a new token.
+
+The KV cache is useful because it speeds up autoregressive generation. When the model generates token number 501, it can reuse stored information from tokens 1 to 500. This makes generation faster than recomputing attention from the beginning each time.
+
+However, the KV cache grows as the number of context tokens grows. A short prompt creates a small KV cache. A long prompt creates a larger KV cache. A very long document or chat history can therefore use a large amount of memory even if the model weights are quantized.
+
+On a 6 GB GPU, long-context inference can become slow or memory-heavy. GPU memory must hold model weights, the KV cache, temporary computation buffers, and runtime overhead. If the model weights already use most of the GPU memory, there is less room for the KV cache.
+
+When GPU memory is not enough, inference may slow down because parts of the work can move to CPU or system RAM. In some cases, the request may fail due to out-of-memory errors. Even when it does not fail, the latency can become too high for interactive use.
+
+Full context prompting means sending the entire document or chat history to the model. This is the simplest baseline. It gives the model maximum information, so answer quality can be strong. The disadvantage is that it uses the largest prompt and usually the largest KV cache.
+
+Sliding window prompting means sending only the most recent part of the document or conversation. This reduces prompt length and memory usage. It works well when the answer is near the end of the context, but it can fail when the answer depends on older information that was removed.
+
+Summary memory compresses older content into a short summary. The model receives the summary instead of the full old context. This is useful for long chats and long documents because it preserves main ideas while reducing the number of tokens. The risk is that summaries may lose exact details.
+
+Retrieval-based memory splits the document into chunks and selects only the chunks most relevant to the question. This reduces prompt size while preserving detailed evidence. Retrieval quality matters: if the wrong chunks are selected, the model may miss the answer.
+
+For long documents about machine learning, retrieval can identify chunks about quantization, pruning, distillation, or KV cache depending on the question. If the question asks about GPU memory and long prompts, retrieval should select the chunks that mention KV cache, prompt length, and 6 GB GPU limits.
+
+In local quantized LLMs, model choice affects memory pressure. A smaller quantized model such as Llama 3 8B Q4 can be a practical baseline on a 6 GB GPU. It is useful for general reasoning, summarization, and document question answering.
+
+A heavier model such as a 9B or 9.7B quantized model can test the limits of the hardware. It may produce better answers for some tasks, but it can use more memory and run slower. On a 6 GB GPU, a heavier model may rely more on CPU offloading.
+
+Code-focused models are useful for code-related long-context tasks. In software projects, the model may need to inspect imports, function definitions, class structures, error traces, and configuration files. CodeGemma can be tested on long source files and code explanations.
+
+The main research question is whether context compression can preserve answer quality while reducing memory usage and latency. If retrieval or summary memory gives similar answer quality to full context with fewer prompt tokens, then it is more practical for small local GPUs.
+
+The experiment should measure answer quality, latency, tokens per second, prompt length, RAM usage, and VRAM usage. Prompt length is important because it directly affects KV-cache size. VRAM usage is important because the hardware limit is the central constraint.
+
+Answer quality can be measured with a manual rubric from 0 to 3. A score of 0 means the answer is wrong or hallucinated. A score of 1 means the answer mentions the topic but misses the main reason. A score of 2 means the answer is mostly correct but incomplete. A score of 3 means the answer is correct, complete, and grounded in the provided context.
+
+Latency measures how long the model takes to complete the response. Prompt processing time is especially important for long contexts because the model must read many tokens before generating the answer. Generation speed can be measured in tokens per second.
+
+For a 6 GB GPU, a safe experiment should start with small context settings and short generated answers. The context length can then be increased carefully. This avoids unnecessary crashes and makes the memory trend easier to observe.
+
+The expected result is that full context gives strong quality but high cost, sliding window is cheap but may miss older facts, summary memory reduces cost while keeping main ideas, and retrieval memory often gives the best balance when the question has clear relevant chunks.
+

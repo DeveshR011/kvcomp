@@ -1,0 +1,66 @@
+{
+  "models": [
+    "llama3:latest"
+  ],
+  "documents": [
+    {
+      "id": "synthetic_scale_1000",
+      "path": "data/documents/synthetic_scale_1000.txt"
+    },
+    {
+      "id": "synthetic_scale_2000",
+      "path": "data/documents/synthetic_scale_2000.txt"
+    },
+    {
+      "id": "synthetic_scale_4000",
+      "path": "data/documents/synthetic_scale_4000.txt"
+    },
+    {
+      "id": "synthetic_scale_8000",
+      "path": "data/documents/synthetic_scale_8000.txt"
+    }
+  ],
+  "questions_path": "data/questions/synthetic_scale_questions.json",
+  "methods": [
+    "full_context",
+    "sliding_window",
+    "retrieval_memory_tfidf",
+    "retrieval_plus_summary",
+    "adaptive_context"
+  ],
+  "num_ctx": 4096,
+  "num_predict": 120,
+  "temperature": 0.0,
+  "repeat_runs": 2,
+  "warmup_runs": 1,
+  "sliding_window_tokens": 500,
+  "summary_tokens": 600,
+  "summary_model": "llama3:latest",
+  "summary_source_tokens": 1800,
+  "summary_num_ctx": 2048,
+  "summary_num_predict": 220,
+  "summary_temperature": 0.0,
+  "retrieval_chunk_tokens": 220,
+  "retrieval_top_k": 3,
+  "hybrid_summary_tokens": 260,
+  "hybrid_retrieval_top_k": 2,
+  "hybrid_retrieval_chunk_tokens": 220,
+  "adaptive_full_context_max_document_tokens": 700,
+  "adaptive_prompt_token_budget": 3200,
+  "adaptive_retrieval_confidence_threshold": 0.04,
+  "embedding_model": "nomic-embed-text:latest",
+  "ollama_host": "http://127.0.0.1:11434",
+  "output_dir": "results/synthetic_scale",
+  "safety": {
+    "enabled": true,
+    "gpu_vram_limit_mib": 6141,
+    "abort_if_peak_vram_mib_gte": 5950,
+    "prompt_token_margin": 96,
+    "max_num_ctx_by_model": {
+      "llama3:latest": 4096
+    },
+    "model_size_gb": {
+      "llama3:latest": 4.7
+    }
+  }
+}

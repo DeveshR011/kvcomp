@@ -1,0 +1,206 @@
+[
+  {
+    "id": "q_ml_kv_end",
+    "document_id": "ml_long_document",
+    "category": "memory_kv_cache",
+    "question": "Why do long prompts become a problem on a 6 GB GPU?",
+    "expected_points": [
+      {
+        "label": "long prompts increase KV cache",
+        "keywords": ["long prompts", "KV cache"]
+      },
+      {
+        "label": "KV cache consumes memory",
+        "keywords": ["KV cache", "memory"]
+      },
+      {
+        "label": "6 GB VRAM is limited",
+        "keywords": ["6 GB", "GPU"]
+      },
+      {
+        "label": "inference can slow down or offload",
+        "aliases": ["slow", "CPU", "RAM", "out-of-memory"]
+      }
+    ]
+  },
+  {
+    "id": "q_ml_quant_beginning",
+    "document_id": "ml_long_document",
+    "category": "fact_near_beginning",
+    "question": "How does quantization help local LLM inference?",
+    "expected_points": [
+      {
+        "label": "reduces bits used for weights",
+        "keywords": ["bits", "weights"]
+      },
+      {
+        "label": "smaller model memory footprint",
+        "aliases": ["smaller", "less memory", "memory needed"]
+      },
+      {
+        "label": "helps run billion-parameter models locally",
+        "aliases": ["local", "consumer GPU", "billion-parameter"]
+      }
+    ]
+  },
+  {
+    "id": "q_ml_retrieval_summary",
+    "document_id": "ml_long_document",
+    "category": "summary_question",
+    "question": "Why can retrieval-based memory be more practical than sending the full context?",
+    "expected_points": [
+      {
+        "label": "splits document into chunks",
+        "keywords": ["chunks"]
+      },
+      {
+        "label": "selects relevant chunks",
+        "keywords": ["relevant", "chunks"]
+      },
+      {
+        "label": "reduces prompt size",
+        "aliases": ["reduce prompt", "smaller prompt", "fewer tokens"]
+      },
+      {
+        "label": "keeps detailed evidence when retrieval is correct",
+        "aliases": ["detailed evidence", "preserving", "quality"]
+      }
+    ]
+  },
+  {
+    "id": "q_ai_symbolic_beginning",
+    "document_id": "ai_survey_long",
+    "category": "fact_near_beginning",
+    "question": "How does the document describe symbolic artificial intelligence?",
+    "expected_points": [
+      {
+        "label": "uses explicit rules",
+        "keywords": ["explicit rules"]
+      },
+      {
+        "label": "uses symbols and logic",
+        "aliases": ["symbols", "logic"]
+      },
+      {
+        "label": "can be brittle",
+        "keywords": ["brittle"]
+      }
+    ]
+  },
+  {
+    "id": "q_transformer_prompt_generation",
+    "document_id": "transformer_notes",
+    "category": "multi_hop",
+    "question": "What is the difference between prompt processing and generation in transformer inference?",
+    "expected_points": [
+      {
+        "label": "prompt processing reads input context",
+        "keywords": ["Prompt processing", "input context"]
+      },
+      {
+        "label": "prompt processing builds the cache",
+        "keywords": ["builds", "cache"]
+      },
+      {
+        "label": "generation produces new tokens",
+        "keywords": ["Generation", "new tokens"]
+      },
+      {
+        "label": "generation extends the cache",
+        "keywords": ["extends", "cache"]
+      }
+    ]
+  },
+  {
+    "id": "q_research_variables",
+    "document_id": "research_paper_excerpt",
+    "category": "research_design",
+    "question": "What are the independent and dependent variables in the experiment?",
+    "expected_points": [
+      {
+        "label": "independent variable is context strategy",
+        "keywords": ["independent variable", "context strategy"]
+      },
+      {
+        "label": "dependent variables include answer quality",
+        "keywords": ["answer quality"]
+      },
+      {
+        "label": "dependent variables include latency",
+        "keywords": ["latency"]
+      },
+      {
+        "label": "dependent variables include memory or VRAM",
+        "aliases": ["VRAM", "RAM", "memory"]
+      },
+      {
+        "label": "dependent variables include prompt length or tokens per second",
+        "aliases": ["prompt length", "tokens per second"]
+      }
+    ]
+  },
+  {
+    "id": "q_chat_first_decision",
+    "document_id": "long_chat_history",
+    "category": "fact_near_beginning",
+    "question": "What was the first recorded baseline-model decision in the chat?",
+    "expected_points": [
+      {
+        "label": "safe baseline model is llama3:latest",
+        "keywords": ["llama3:latest"]
+      },
+      {
+        "label": "num_ctx is 2048",
+        "keywords": ["num_ctx", "2048"]
+      }
+    ]
+  },
+  {
+    "id": "q_chat_recent_note",
+    "document_id": "long_chat_history",
+    "category": "fact_near_end",
+    "question": "What is the latest operational note in the chat?",
+    "expected_points": [
+      {
+        "label": "keep default conservative",
+        "keywords": ["conservative"]
+      },
+      {
+        "label": "use llama3 first",
+        "keywords": ["llama3"]
+      },
+      {
+        "label": "test codegemma at num_ctx 1024",
+        "keywords": ["codegemma", "1024"]
+      },
+      {
+        "label": "run qwen deliberately as stress test",
+        "aliases": ["qwen3.5:9b", "stress test"]
+      }
+    ]
+  },
+  {
+    "id": "q_code_bug",
+    "document_id": "codebase_documentation",
+    "category": "code_related",
+    "question": "What is wrong with count_tokens_wrong(text), and what should the project use instead?",
+    "expected_points": [
+      {
+        "label": "count_tokens_wrong counts characters",
+        "keywords": ["characters"]
+      },
+      {
+        "label": "characters are not tokens",
+        "keywords": ["not tokens"]
+      },
+      {
+        "label": "use approximate_token_count before inference",
+        "keywords": ["approximate_token_count"]
+      },
+      {
+        "label": "use Ollama prompt_eval_count after inference",
+        "keywords": ["prompt_eval_count"]
+      }
+    ]
+  }
+]

@@ -1,0 +1,20 @@
+User: We need to design an MTech project on local LLM inference.
+Assistant: The project can focus on memory-efficient long-context inference under a 6 GB GPU constraint.
+User: Record the first decision: the safe baseline model should be llama3:latest with num_ctx 2048.
+Assistant: Recorded. The first decision is to use llama3:latest as the safe baseline with num_ctx 2048.
+
+User: Add a second decision about heavy models.
+Assistant: Heavy models such as qwen3.5:9b should be treated as stress tests because they may exceed the available VRAM and offload to CPU/RAM.
+
+User: Add a third decision about evaluation.
+Assistant: The experiment should use repeated measured runs, exclude warmup runs from aggregates, and score answer quality with expected answer points.
+
+User: Now discuss context methods.
+Assistant: Full context gives all evidence but costs more memory. Sliding window keeps recent context but can lose early decisions. Summary memory compresses older messages. Retrieval memory selects relevant chunks.
+
+User: What should we do for code tasks?
+Assistant: Use CodeGemma for code-related long-context tasks and compare it with llama3 on the same code questions.
+
+User: What is the latest operational note?
+Assistant: Keep the default run conservative. Use llama3 first, then test codegemma at num_ctx 1024, and only run qwen3.5:9b deliberately as a stress test.
+

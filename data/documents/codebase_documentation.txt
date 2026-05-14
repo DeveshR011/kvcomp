@@ -1,0 +1,36 @@
+Project: Long-context inference experiment runner
+
+The runner loads a document, builds a prompt using one context strategy, calls Ollama, and records metrics. The main script is run_experiment.py. The environment checker is check_environment.py.
+
+Important functions:
+
+resolve_path(path_text):
+    Converts a relative project path into an absolute path under the project root.
+
+approximate_token_count(text):
+    Counts approximate tokens using a regular expression. This is not exact model tokenization, so final tables should prefer Ollama prompt_eval_count when it is available.
+
+make_sliding_window(document, token_budget):
+    Keeps only the last token_budget approximate tokens from the document.
+
+make_extractive_summary(document, question, token_budget):
+    Scores sentences with document frequency and question overlap, then keeps high-scoring sentences within the token budget.
+
+tfidf_retrieval(document, question, chunk_tokens, top_k):
+    Splits the document into chunks, computes TF-IDF vectors, and returns the top-k chunks by cosine similarity.
+
+Known bug example:
+
+def count_tokens_wrong(text):
+    return len(text)
+
+The function above is wrong for this project because it counts characters, not tokens. A long string with few words would be overestimated, and a compact code line with many symbols may be underestimated. The project should use approximate_token_count before inference and Ollama prompt_eval_count after inference.
+
+Expected safety behavior:
+
+The runner should stop if approximate prompt tokens are too close to num_ctx. The runner should also enforce small num_ctx values for heavier models on a 6 GB GPU. qwen3.5:9b is a stress-test model, not the safe default.
+
+Expected reporting behavior:
+
+Warmup runs should be stored but excluded from aggregate tables. Repeated measured runs should be averaged. The report should include latency, tokens per second, peak VRAM, prompt tokens, and automatic answer-quality helper scores.
+

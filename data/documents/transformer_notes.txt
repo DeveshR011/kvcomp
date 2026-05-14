@@ -1,0 +1,20 @@
+Transformer inference processes text as a sequence of tokens. Each token becomes a vector representation. The model uses attention layers to decide which previous tokens should influence the next prediction.
+
+Attention uses three learned projections commonly called query, key, and value. For each token, the model creates key and value vectors. When generating the next token, the current query is compared with previous keys, and the corresponding values are combined.
+
+During autoregressive generation, tokens are produced one at a time. Without caching, the model would repeatedly recompute keys and values for all previous tokens. This would waste computation and make generation much slower.
+
+The KV cache stores the key and value tensors for previous tokens. When the model generates a new token, it reuses cached keys and values instead of recomputing them from the beginning. This is why KV cache is useful for fast generation.
+
+The memory used by the KV cache depends on the number of tokens, the number of layers, the number of attention heads or key-value heads, and the precision used for cache tensors. More context tokens require more stored key-value data.
+
+Prompt processing and generation are different phases. Prompt processing reads the input context and builds the cache. Generation produces new tokens while extending the cache. Long prompts mostly increase the prompt processing cost and the initial cache size.
+
+Sliding window attention limits the active context to a recent window. This can reduce memory, but it can also remove older facts. It works best when the question depends on recent information.
+
+Summary memory compresses old text into a shorter representation. It can preserve high-level facts but may lose exact names, numbers, or code lines. Its quality depends on the summarizer.
+
+Retrieval memory selects relevant chunks from a larger document. It can keep exact evidence while avoiding unrelated text. It depends on chunking, scoring, and top-k selection.
+
+On a 6 GB GPU, KV-cache growth competes with model weights and temporary buffers. If context length is too high, inference may spill to CPU/RAM, slow down, or fail.
+

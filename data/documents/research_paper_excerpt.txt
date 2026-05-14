@@ -1,0 +1,16 @@
+Title: Controlled Evaluation of Context Compression for Local Quantized Language Models
+
+Abstract: This study evaluates whether compressed context can preserve answer quality while reducing latency and memory pressure for local quantized language models. The target hardware class is a consumer GPU with approximately 6 GB of VRAM.
+
+The experiment compares four context strategies. The full context baseline sends the complete document. The sliding window baseline sends only recent context. Summary memory sends a compressed summary. Retrieval memory sends selected chunks that are relevant to the user question.
+
+The independent variable is the context strategy. The dependent variables are answer quality, prompt length, latency, tokens per second, peak VRAM usage, and peak RAM usage. Model identity is treated as an additional experimental condition.
+
+The expected outcome is that full context provides strong quality but high cost. Sliding window should have low cost but unstable quality when the answer is outside the recent window. Summary memory should reduce prompt size while preserving main ideas. Retrieval memory should provide a stronger quality-cost tradeoff when relevant chunks can be found.
+
+The evaluation uses a manual quality rubric from 0 to 3. A score of 0 means the answer is incorrect or hallucinated. A score of 1 means the answer mentions the topic but misses the main point. A score of 2 means the answer is mostly correct but incomplete. A score of 3 means the answer is complete and grounded in the supplied context.
+
+Repeated runs are required because local inference timing varies. A warmup run is excluded from aggregate metrics to avoid mixing cold model loading with steady-state inference. Measured runs are averaged, and standard deviation is reported where enough samples exist.
+
+The main limitation is that compression can remove important details. A summary can omit exact evidence. Retrieval can select the wrong chunk. Therefore, answer quality must be measured along with speed and memory.
+

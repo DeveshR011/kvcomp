@@ -1,0 +1,62 @@
+{
+  "models": [
+    "llama3:latest",
+    "codegemma:latest"
+  ],
+  "documents": [
+    {
+      "id": "codebase_documentation",
+      "path": "data/documents/codebase_documentation.txt"
+    }
+  ],
+  "questions_path": "data/questions/thesis_questions.json",
+  "methods": [
+    "full_context",
+    "sliding_window",
+    "summary_memory_extractive",
+    "retrieval_memory_tfidf",
+    "retrieval_plus_summary",
+    "adaptive_context"
+  ],
+  "num_ctx": 1024,
+  "num_predict": 140,
+  "temperature": 0.0,
+  "repeat_runs": 3,
+  "warmup_runs": 1,
+  "sliding_window_tokens": 350,
+  "summary_tokens": 350,
+  "summary_model": "llama3:latest",
+  "summary_source_tokens": 1000,
+  "summary_num_ctx": 1024,
+  "summary_num_predict": 180,
+  "summary_temperature": 0.0,
+  "retrieval_chunk_tokens": 160,
+  "retrieval_top_k": 3,
+  "hybrid_summary_tokens": 160,
+  "hybrid_retrieval_top_k": 2,
+  "hybrid_retrieval_chunk_tokens": 160,
+  "adaptive_full_context_max_document_tokens": 350,
+  "adaptive_prompt_token_budget": 760,
+  "adaptive_retrieval_confidence_threshold": 0.04,
+  "embedding_model": "nomic-embed-text:latest",
+  "ollama_host": "http://127.0.0.1:11434",
+  "output_dir": "results/code_tasks",
+  "safety": {
+    "enabled": true,
+    "gpu_vram_limit_mib": 6141,
+    "abort_if_peak_vram_mib_gte": 5900,
+    "prompt_token_margin": 64,
+    "max_num_ctx_by_model": {
+      "llama3:latest": 4096,
+      "codegemma:latest": 1024,
+      "qwen3.5:9b": 1024,
+      "qwen3.5:latest": 1024
+    },
+    "model_size_gb": {
+      "llama3:latest": 4.7,
+      "codegemma:latest": 5.0,
+      "qwen3.5:9b": 6.6,
+      "qwen3.5:latest": 6.6
+    }
+  }
+}
