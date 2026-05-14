@@ -43,14 +43,6 @@ Implemented and tested:
 - Synthetic scaling dataset generator
 - Smoke tests for `llama3:latest` and `codegemma:latest`
 
-Tested machine:
-
-```text
-GPU: NVIDIA GeForce RTX 4050 Laptop GPU
-VRAM: 6141 MiB
-Python: 3.14.2
-Ollama: installed and reachable at http://127.0.0.1:11434
-```
 
 Installed models detected during setup:
 
