@@ -1,0 +1,35 @@
+{
+  "name": "ruler_h2o",
+  "benchmark": "ruler",
+  "tasks": [
+    "niah_single_1",
+    "niah_single_2",
+    "niah_multikey_1",
+    "niah_multivalue",
+    "vt",
+    "cwe"
+  ],
+  "context_lengths": [2048, 4096, 8192],
+  "samples_per_cell": 4,
+  "policies": ["h2o"],
+  "budgets": [256, 1024],
+  "policy_config": {
+    "sink": 16,
+    "recent": 128,
+    "window": 32,
+    "chunk": 128
+  },
+  "engine": {
+    "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+    "quantization": "nf4",
+    "dtype": "bfloat16",
+    "device": "cuda",
+    "greedy": true,
+    "prefill_chunk": 2048
+  },
+  "max_new_tokens": 32,
+  "seed": 0,
+  "results_root": "results/kvcomp",
+  "skip_if_oom_at_length": true,
+  "probe_infeasible": true
+}

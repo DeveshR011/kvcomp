@@ -1,0 +1,7 @@
+# Install torch separately with a CUDA build matching your driver, e.g.
+#   pip install torch --index-url https://download.pytorch.org/whl/cu128
+torch>=2.4
+transformers>=5.0
+accelerate>=1.0
+bitsandbytes>=0.43
+pytest>=8.0

@@ -1,0 +1,28 @@
+{
+  "name": "quick",
+  "benchmark": "ruler",
+  "tasks": ["niah_single_1", "niah_multikey_1", "vt", "cwe"],
+  "context_lengths": [2048],
+  "samples_per_cell": 3,
+  "policies": ["full", "streaming_llm", "snapkv", "pyramidkv"],
+  "budgets": [256],
+  "policy_config": {
+    "sink": 16,
+    "recent": 128,
+    "window": 32,
+    "pool_kernel": 7
+  },
+  "engine": {
+    "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+    "quantization": "nf4",
+    "dtype": "bfloat16",
+    "device": "cuda",
+    "greedy": true,
+    "prefill_chunk": 2048
+  },
+  "max_new_tokens": 24,
+  "seed": 0,
+  "results_root": "results/kvcomp",
+  "skip_if_oom_at_length": true,
+  "probe_infeasible": false
+}

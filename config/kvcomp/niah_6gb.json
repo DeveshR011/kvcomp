@@ -1,0 +1,26 @@
+{
+  "name": "niah_6gb",
+  "benchmark": "niah",
+  "context_lengths": [2048, 4096, 8192, 16384, 32768],
+  "depths": [0.0, 0.1, 0.25, 0.5, 0.75, 0.9, 1.0],
+  "samples_per_cell": 3,
+  "policies": ["full", "streaming_llm", "snapkv", "pyramidkv"],
+  "budgets": [256, 1024],
+  "policy_config": {
+    "sink": 16,
+    "recent": 128,
+    "window": 32,
+    "pool_kernel": 7
+  },
+  "engine": {
+    "model_id": "Qwen/Qwen3-4B-Instruct-2507",
+    "quantization": "nf4",
+    "dtype": "bfloat16",
+    "device": "cuda",
+    "greedy": true
+  },
+  "max_new_tokens": 32,
+  "seed": 0,
+  "results_root": "results/kvcomp",
+  "skip_if_oom_at_length": true
+}
