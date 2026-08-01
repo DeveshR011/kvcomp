@@ -6,6 +6,7 @@ venv/
 .ruff_cache/
 *.egg-info/
 
-results/
-reports/
+# Raw sweep output (large, per-sample). Curated aggregates live in docs/results/.
+/results/
+/reports/
 .cache/

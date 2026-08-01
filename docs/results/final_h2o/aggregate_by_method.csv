@@ -1,0 +1,3 @@
+policy,budget,count,score_mean,ci_low,ci_high,oom_rate,error_rate,peak_vram_gib,cache_gib,compression,prefill_s,compress_s,decode_tps
+h2o,1024,72,0.1435,0.0822,0.2118,0.0000,0.0000,3.055,0.1406,0.7017,5.832,0.017,12.85
+h2o,256,72,0.0648,0.0266,0.1065,0.0000,0.0000,2.977,0.0352,0.9254,5.173,0.020,12.68
