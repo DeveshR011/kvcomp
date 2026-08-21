@@ -9,8 +9,15 @@ touch the KV cache, and the model never sees the discarded text. The two arms
 answer different questions. Prompt-level methods reduce what enters the model;
 KV compression reduces what the model retains after reading everything.
 
-For the KV-cache compression work and its results, see the main
-[README](../README.md) and [docs/kvcomp.md](kvcomp.md).
+> **Status: exploratory / superseded.** This arm was the project's starting
+> point and its results are preliminary smoke tests, as the sections below
+> state. It is kept for provenance, not as a result.
+>
+> **The completed work is the KV-cache compression study** — 2,169 benchmark
+> runs on RULER and Needle-in-a-Haystack, reported in the main
+> [README](../README.md), with design notes in [kvcomp.md](kvcomp.md) and
+> published aggregates in [results/](results/). Nothing on this page bears on
+> those numbers.
 
 ---
 
@@ -75,61 +82,6 @@ Installed models detected during setup:
 | `qwen3.5:9b` | 6.6 GB | Heavy stress-test model |
 
 `qwen3.5:9b` is larger than detected VRAM. Treat it as a stress-test model, not as the safe baseline.
-
----
-
-## GitHub Readiness
-
-This project is ready to push as a research-code repository, with one important distinction:
-
-```text
-The codebase is ready.
-The thesis results are not complete yet.
-```
-
-The repository currently contains:
-
-- runnable experiment code
-- configs for safe, stress, code, adaptive, synthetic, and sweep experiments
-- structured datasets and questions
-- report generation
-- charts
-- safety checks for 6 GB VRAM
-- preliminary smoke-test results summarized below
-
-The generated folders are ignored by `.gitignore`:
-
-```text
-results/
-reports/
-.cache/
-```
-
-That is intentional. Do not commit large generated experiment outputs by default. For GitHub, commit the code, configs, data, scripts, and README. If you want to publish selected results, either summarize them in the README or add a small curated `examples/` or `docs/results/` folder later.
-
-Current repo status:
-
-```text
-D:\projects\Kv is not currently initialized as a git repository.
-```
-
-To push it:
-
-```powershell
-git init
-git add .
-git commit -m "Initial long-context inference experiment framework"
-git branch -M main
-git remote add origin https://github.com/<your-username>/<your-repo>.git
-git push -u origin main
-```
-
-Before pushing, check what will be committed:
-
-```powershell
-git status --short
-git check-ignore -v results reports .cache
-```
 
 ---
 

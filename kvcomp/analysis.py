@@ -56,7 +56,13 @@ class Aggregate:
     mean_decode_tps: float = 0.0
 
 
-RESULT_KEY = ("policy", "budget", "task", "context_length", "index")
+#: Fields that jointly identify one benchmark sample.
+#:
+#: ``depth`` is required even though only NIAH sets it. Every NIAH sample shares
+#: ``task="niah"`` and distinguishes itself by needle depth, so a key without it
+#: collapses all depths onto the same index: a 945-run sweep deduplicated to 135
+#: rows, silently discarding 86% of the data from every published aggregate.
+RESULT_KEY = ("policy", "budget", "task", "context_length", "index", "depth")
 
 
 def load_results(path: str | Path, deduplicate: bool = True) -> list[dict[str, Any]]:

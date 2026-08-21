@@ -15,6 +15,9 @@ from kvcomp.analysis import (
 )
 
 
+NEWLINE = chr(10)
+
+
 def _row(**overrides):
     row = {
         "policy": "snapkv",
@@ -75,6 +78,26 @@ class TestLoading:
         rows = [_row(index=0, score=1.0), _row(index=0, score=0.0)]
         path.write_text("\n".join(json.dumps(r) for r in rows), encoding="utf-8")
         assert load_results(path)[0]["score"] == 0.0
+
+    def test_niah_depths_are_not_collapsed(self, tmp_path):
+        """Depth must be part of the identity key.
+
+        Every NIAH sample carries task="niah" and distinguishes itself by needle
+        depth, so a key without depth maps all depths onto the same index. A
+        945-run sweep deduplicated to 135 rows, dropping 86% of the data from
+        every published aggregate while the report still looked well-formed.
+        """
+        path = tmp_path / "niah.jsonl"
+        rows = [
+            _row(task="niah", index=i, depth=d, score=1.0)
+            for i in range(3)
+            for d in [0.0, 0.25, 0.5, 0.75, 1.0]
+        ]
+        path.write_text(NEWLINE.join(json.dumps(r) for r in rows), encoding="utf-8")
+
+        loaded = load_results(path)
+        assert len(loaded) == 15, "distinct depths were collapsed onto one index"
+        assert len({r["depth"] for r in loaded}) == 5
 
     def test_deduplication_can_be_disabled(self, tmp_path):
         path = tmp_path / "dupes.jsonl"
